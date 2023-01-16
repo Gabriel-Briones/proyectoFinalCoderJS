@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+.caja {
+    background-color: #E5E5E5;
+    color: #14213D;
+    width: 250px;
+    height: 300px;
+    border: 3px solid #14213D;
+    padding: 20px;
+    min-width: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.caja:hover {
+    transform: scale(1.05);
+}
+
+
+.barra_nav {
+
+}
+
+.titulos {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
