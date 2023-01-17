@@ -3,9 +3,32 @@ const paisesEnLS = JSON.parse(localStorage.getItem("paisesEnLS"));
 if (paisesEnLS !== null) {
     paises = paisesEnLS;
     console.log("Lista de paises ya en memoria local");
+    Toastify({
+        text: "Continua modificando los países",
+        className: "info",
+        style: {
+            background: "#14213D",
+        },
+        offset: {
+            x: 10,
+            y: 50,
+        },
+    }).showToast();
+
 } else {
     const paisesEnLS = paises;
     console.log("Se asignaron los valores de la base de datos en JS");
+    Toastify({
+        text: "Base de datos original",
+        className: "info",
+        style: {
+            background: "#14213D",
+        },
+        offset: {
+            x: 10,
+            y: 50,
+        },
+    }).showToast();
 }
 
 // Modal "Agregar país": Función para agregar un nuevo país al array
@@ -60,7 +83,7 @@ function agregarPais(e) {
         offset: {
             x: 10,
             y: 50,
-          },
+        },
     }).showToast();
 }
 
@@ -122,9 +145,22 @@ function eliminarPais() {
         offset: {
             x: 10,
             y: 50,
-          },
+        },
     }).showToast();
 }
+
+// Modal "Empezar de nuevo: Función para borrar la base de datos local
+const botonLimpiarLocal = document.querySelector("#btnLimpiarLocal");
+botonLimpiarLocal.addEventListener("click", limpiarLocal);
+
+function limpiarLocal() {
+    window.localStorage.removeItem('paisesEnLS');
+    location.reload()
+
+};
+
+
+
 
 //Cuerpo HTML: Mostrar Países
 const pintarPaises = () => {
