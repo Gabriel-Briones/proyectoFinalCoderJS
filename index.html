@@ -38,7 +38,9 @@
             </p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <button id="agregar" type="button" class="btn btn-primary btn-lg px-4 gap-3" data-bs-toggle="modal"
-                    data-bs-target="#ModalAgregar">Agregar país</button>
+                    data-bs-target="#ModalAgregar">Agregar país Nuevo</button>
+                <button id="agregarExistente" type="button" class="btn btn-primary btn-lg px-4 gap-3" data-bs-toggle="modal"
+                    data-bs-target="#ModalAgregarExistente">Agregar país Existente</button>
                 <button id="eliminar" type="button" class="btn btn-outline-secondary btn-lg px-4" data-bs-toggle="modal"
                     data-bs-target="#ModalEliminar">Eliminar país</button>
                 <button id="filtrar" type="button" class="btn btn-outline-secondary btn-lg px-4" data-bs-toggle="modal"
@@ -96,6 +98,27 @@
         </div>
     </div>
 
+    <div class="modal fade" id="ModalAgregarExistente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Elige que país agregar</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <select id="modal-opciones-agregar" class="form-select" aria-label="Default select example">
+                        <option selected>Selecciona un país de esta lista</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="btnAgregarExistente" type="button" class="btn btn-primary"
+                        data-bs-dismiss="modal">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="ModalFiltrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -106,7 +129,8 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="paisFiltro" class="form-label">Selecciona el método para ordenar los países</label>
+                            <label for="paisFiltro" class="form-label">Selecciona el método para ordenar los
+                                países</label>
                             <input type="email" class="form-control" id="paisFiltro" placeholder="Odenar por"
                                 aria-describedby="emailHelp">
                         </div>
@@ -149,12 +173,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Si presionas borrar, todos los países agregados y eliminados volverán al estado inicial de la página.</p>
+                    <p>Si presionas borrar, todos los países agregados y eliminados volverán al estado inicial de la
+                        página.</p>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="btnLimpiarLocal" type="button" class="btn btn-primary" data-bs-dismiss="modal">Borrar</button>
+                    <button id="btnLimpiarLocal" type="button" class="btn btn-primary"
+                        data-bs-dismiss="modal">Borrar</button>
                 </div>
             </div>
         </div>
@@ -170,6 +196,7 @@
 <script src="./js/paises.js"></script>
 <script src="./js/modoOscuro.js"></script>
 <script src="./js/funciones.js"></script>
+<script src="./js/fetchListaExistentes.js"></script>
 
 
 
