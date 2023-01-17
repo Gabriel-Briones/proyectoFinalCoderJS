@@ -31,7 +31,7 @@ if (paisesEnLS !== null) {
     }).showToast();
 }
 
-// Modal "Agregar país": Función para agregar un nuevo país al array
+// Modal "Agregar país": Función para agregar un nuevo país al array ingresando manualmente los datos
 const botonAgregar = document.querySelector("#btnAgregarPais");
 botonAgregar.addEventListener("click", agregarPais);
 const formulario = document.querySelector("#agregar-form");
@@ -70,7 +70,6 @@ function agregarPais(e) {
     paises.push(pais);
 
     localStorage.setItem("paisesEnLS", JSON.stringify(paises));
-
     pintarPaises();
     formulario.reset();
 
@@ -87,7 +86,7 @@ function agregarPais(e) {
     }).showToast();
 }
 
-//Borrar set de países viejos al agregar uno nuevo
+//Borrar el contenedor con los países viejos al agregar uno nuevo
 const borrarPaisesViejos = () => {
     const contenedor = document.getElementById("pais-contenedor");
     while (contenedor.firstChild) {
@@ -111,7 +110,6 @@ const modalEliminarPaises = () => {
     });
 };
 
-
 // Modal "Eliminar Países": Funcionalidad botón Eliminar
 const btnEliminarModal = document.getElementById("btnEliminarModal");
 btnEliminarModal.addEventListener("click", eliminarPais);
@@ -130,9 +128,7 @@ function eliminarPais() {
     paises.splice(indice, 1);
 
     modalEliminarPaises();     // Actualizar la lista de países en el modal
-
     localStorage.setItem("paisesEnLS", JSON.stringify(paises));
-
     borrarPaisesViejos();
     pintarPaises();
 
@@ -149,6 +145,7 @@ function eliminarPais() {
     }).showToast();
 }
 
+// Función para el botón "ordenar Países":
 const btnOrdenar = document.getElementById("btnOrdenar");
 btnOrdenar.addEventListener("click", ordenarPaises);
 
@@ -169,46 +166,40 @@ function ordenarPaises() {
             break;
     }
 
-            modalEliminarPaises();     // Actualizar la lista de países en el modal
+    modalEliminarPaises();     // Actualizar la lista de países en el modal
+    localStorage.setItem("paisesEnLS", JSON.stringify(paises));
+    borrarPaisesViejos();
+    pintarPaises();
 
-            localStorage.setItem("paisesEnLS", JSON.stringify(paises));
+    Toastify({
+        text: "Ordenaste los paises",
+        className: "info",
+        style: {
+            background: "#14213D",
+        },
+        offset: {
+            x: 10,
+            y: 50,
+        },
+    }).showToast();
+}
 
-            borrarPaisesViejos();
-            pintarPaises();
+// Modal "Empezar de nuevo: Función para borrar la base de datos local
+const botonLimpiarLocal = document.querySelector("#btnLimpiarLocal");
+botonLimpiarLocal.addEventListener("click", limpiarLocal);
 
-            Toastify({
-                text: "Ordenaste los paises",
-                className: "info",
-                style: {
-                    background: "#14213D",
-                },
-                offset: {
-                    x: 10,
-                    y: 50,
-                },
-            }).showToast();
-    }
+function limpiarLocal() {
+    window.localStorage.removeItem('paisesEnLS');
+    location.reload()
+};
 
-
-
-
-    // Modal "Empezar de nuevo: Función para borrar la base de datos local
-    const botonLimpiarLocal = document.querySelector("#btnLimpiarLocal");
-    botonLimpiarLocal.addEventListener("click", limpiarLocal);
-
-    function limpiarLocal() {
-        window.localStorage.removeItem('paisesEnLS');
-        location.reload()
-    };
-
-
-    //Cuerpo HTML: Mostrar Países
-    const pintarPaises = () => {
-        const contenedor = document.getElementById("pais-contenedor");
-        paises.forEach(pais => {
-            const div = document.createElement('div');
-            div.classList.add('caja');
-            div.innerHTML += `<div class="card-image">
+//Cuerpo HTML: Mostrar Países
+const pintarPaises = () => {
+    const contenedor = document.getElementById("pais-contenedor");
+    paises.forEach(pais => {
+        const div = document.createElement('div');
+        div.classList.add('caja');
+        div.innerHTML += `<div class="card-image">
                         <!-- <img src=${pais.img}> -->
                         <p class="titulos">${pais.nombre}</p>
                         </div>
@@ -219,13 +210,12 @@ function ordenarPaises() {
                             <p>Año Independencia: ${pais.independencia.toLocaleString()}</p>
                             <p>Capital: ${pais.capital}</p>
                         </div>`
-            contenedor.appendChild(div);
-        });
-        modalEliminarPaises(); //Refrescar la lista de países en el modal
-    };
-
-    // Carga inicial de la pagina 
-    document.addEventListener('DOMContentLoaded', () => {
-        pintarPaises();
-        modalEliminarPaises();
+        contenedor.appendChild(div);
     });
+    modalEliminarPaises(); //Refrescar la lista de países en el modal
+};
+
+// Carga inicial de la pagina 
+document.addEventListener('DOMContentLoaded', () => {
+    pintarPaises();
+});
