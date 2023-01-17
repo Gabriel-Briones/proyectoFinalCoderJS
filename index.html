@@ -127,18 +127,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="paisFiltro" class="form-label">Selecciona el método para ordenar los
-                                países</label>
-                            <input type="email" class="form-control" id="paisFiltro" placeholder="Odenar por"
-                                aria-describedby="emailHelp">
-                        </div>
-                    </form>
+                    <select id="modal-opciones-Filtrar" class="form-select" aria-label="Default select example">
+                        <option selected>Ordenar por superficie</option>
+                        <option>Ordenar por población</option>
+                    </select>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ordenar</button>
+                    <button id="btnOrdenar" type="button" class="btn btn-primary" data-bs-dismiss="modal">Ordenar</button>
                 </div>
             </div>
         </div>

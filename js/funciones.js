@@ -149,23 +149,66 @@ function eliminarPais() {
     }).showToast();
 }
 
-// Modal "Empezar de nuevo: Función para borrar la base de datos local
-const botonLimpiarLocal = document.querySelector("#btnLimpiarLocal");
-botonLimpiarLocal.addEventListener("click", limpiarLocal);
+const btnOrdenar = document.getElementById("btnOrdenar");
+btnOrdenar.addEventListener("click", ordenarPaises);
 
-function limpiarLocal() {
-    window.localStorage.removeItem('paisesEnLS');
-    location.reload()
-};
+function ordenarPaises() {
+    const select = document.getElementById("modal-opciones-Filtrar");
+    const nombre = select.value;
+    console.log(nombre);
+
+    switch (nombre) {
+        case "Ordenar por superficie":
+            paises.sort((a, b) => a.superficie - b.superficie);
+            break;
+        case "Ordenar por población":
+            paises.sort((a, b) => a.poblacion - b.poblacion);
+            break;
+        default:
+            alert("Opción inválida. Por favor, elige una opción válida.");
+            break;
+    }
+
+            modalEliminarPaises();     // Actualizar la lista de países en el modal
+
+            localStorage.setItem("paisesEnLS", JSON.stringify(paises));
+
+            borrarPaisesViejos();
+            pintarPaises();
+
+            Toastify({
+                text: "Ordenaste los paises",
+                className: "info",
+                style: {
+                    background: "#14213D",
+                },
+                offset: {
+                    x: 10,
+                    y: 50,
+                },
+            }).showToast();
+    }
 
 
-//Cuerpo HTML: Mostrar Países
-const pintarPaises = () => {
-    const contenedor = document.getElementById("pais-contenedor");
-    paises.forEach(pais => {
-        const div = document.createElement('div');
-        div.classList.add('caja');
-        div.innerHTML += `<div class="card-image">
+
+
+    // Modal "Empezar de nuevo: Función para borrar la base de datos local
+    const botonLimpiarLocal = document.querySelector("#btnLimpiarLocal");
+    botonLimpiarLocal.addEventListener("click", limpiarLocal);
+
+    function limpiarLocal() {
+        window.localStorage.removeItem('paisesEnLS');
+        location.reload()
+    };
+
+
+    //Cuerpo HTML: Mostrar Países
+    const pintarPaises = () => {
+        const contenedor = document.getElementById("pais-contenedor");
+        paises.forEach(pais => {
+            const div = document.createElement('div');
+            div.classList.add('caja');
+            div.innerHTML += `<div class="card-image">
                         <!-- <img src=${pais.img}> -->
                         <p class="titulos">${pais.nombre}</p>
                         </div>
@@ -176,13 +219,13 @@ const pintarPaises = () => {
                             <p>Año Independencia: ${pais.independencia.toLocaleString()}</p>
                             <p>Capital: ${pais.capital}</p>
                         </div>`
-        contenedor.appendChild(div);
-    });
-    modalEliminarPaises(); //Refrescar la lista de países en el modal
-};
+            contenedor.appendChild(div);
+        });
+        modalEliminarPaises(); //Refrescar la lista de países en el modal
+    };
 
-// Carga inicial de la pagina 
-document.addEventListener('DOMContentLoaded', () => {
-    pintarPaises();
-    modalEliminarPaises();
-});
+    // Carga inicial de la pagina 
+    document.addEventListener('DOMContentLoaded', () => {
+        pintarPaises();
+        modalEliminarPaises();
+    });
