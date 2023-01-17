@@ -15,7 +15,7 @@ function desactivarDarkMode() {
     document.getElementById("color-mode").innerText = "Modo Oscuro";
 }
 
-//Fijarse como arrancar la página
+//Fijarse como arranca la página
 if (darkMode === "activado") {
     activarDarkMode();
 } else {

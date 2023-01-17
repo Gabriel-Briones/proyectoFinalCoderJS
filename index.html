@@ -37,10 +37,12 @@
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <button id="agregar" type="button" class="btn btn-primary btn-lg px-4 gap-3" data-bs-toggle="modal"
                     data-bs-target="#ModalAgregar">Agregar país</button>
-                <!-- <button id="filtrar" type="button" class="btn btn-outline-secondary btn-lg px-4" data-bs-toggle="modal"
-                    data-bs-target="#ModalFiltrar">Filtrar país</button> -->
                 <button id="eliminar" type="button" class="btn btn-outline-secondary btn-lg px-4" data-bs-toggle="modal"
                     data-bs-target="#ModalEliminar">Eliminar país</button>
+                <button id="filtrar" type="button" class="btn btn-outline-secondary btn-lg px-4" data-bs-toggle="modal"
+                    data-bs-target="#ModalFiltrar">Ordenar países</button>
+                <button id="limpiarLocal" type="button" class="btn btn-outline-secondary btn-lg px-4"
+                    data-bs-toggle="modal" data-bs-target="#ModalLimpiarLocal">Empezar de nuevo</button>
             </div>
         </div>
     </div>
@@ -102,15 +104,15 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="paisFiltro" class="form-label">Filtro</label>
-                            <input type="email" class="form-control" id="paisFiltro" placeholder="Filtro"
+                            <label for="paisFiltro" class="form-label">Ordenar por</label>
+                            <input type="email" class="form-control" id="paisFiltro" placeholder="Odenar por"
                                 aria-describedby="emailHelp">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Filtrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ordenar</button>
                 </div>
             </div>
         </div>
@@ -132,6 +134,25 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button id="btnEliminarModal" type="button" class="btn btn-primary"
                         data-bs-dismiss="modal">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalLimpiarLocal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Borrar la base de datos local</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Si presionas borrar, todos los países agregados y eliminados volverán al estado inicial de la página.</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Borrar</button>
                 </div>
             </div>
         </div>
