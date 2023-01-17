@@ -17,7 +17,7 @@ if (paisesEnLS !== null) {
 
 } else {
     const paisesEnLS = paises;
-    console.log("Se asignaron los valores de la base de datos en JS");
+    console.log("Se asignaron los valores de la base de datos embebida");
     Toastify({
         text: "Base de datos original",
         className: "info",
@@ -156,10 +156,7 @@ botonLimpiarLocal.addEventListener("click", limpiarLocal);
 function limpiarLocal() {
     window.localStorage.removeItem('paisesEnLS');
     location.reload()
-
 };
-
-
 
 
 //Cuerpo HTML: Mostrar Países
