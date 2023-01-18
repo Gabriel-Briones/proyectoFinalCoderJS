@@ -4,13 +4,13 @@ const body = document.body;
 let darkMode = localStorage.getItem("dark-mode");
 
 function activarDarkMode() {
-    body.classList.add("text-bg-dark");
+    body.classList.add("dark");
     localStorage.setItem("dark-mode", "activado");
     document.getElementById("color-mode").innerText = "Modo Claro";
 }
 
 function desactivarDarkMode() {
-    body.classList.remove("text-bg-dark");
+    body.classList.remove("dark");
     localStorage.setItem("dark-mode", "desactivado");
     document.getElementById("color-mode").innerText = "Modo Oscuro";
 }

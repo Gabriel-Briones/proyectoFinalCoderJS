@@ -26,12 +26,11 @@
     transform: scale(1.05);
 }
 
-
-.barra_nav {
-
-}
-
 .titulos {
     text-align: center;
     border-bottom: 2px solid black;
+}
+
+.dark {
+    background-color: #4e4e4e;
 }
